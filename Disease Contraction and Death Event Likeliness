@@ -1,0 +1,64 @@
+#Importing libraries
+from numpy import array
+from matplotlib import pyplot as plt
+plt.style.use('fivethirtyeight')
+import pandas as pd
+from sklearn import linear_model
+
+#Using a Pravega.io stream to generate CSV. With real time data updates in the stream, the dataset in csv get updated on cloud
+
+Mcancer = pd.read_csv('cancer.csv')
+cancer = Mcancer.drop(columns="Patient Id")
+cancer['Level'] = cancer['Level'].replace(['Low'],'1')
+cancer['Level'] = cancer['Level'].replace(['Medium'],'2')
+cancer['Level'] = cancer['Level'].replace(['High'],'3')
+# The various parameters are filled from 0(low) to 9(high)
+reg = linear_model.LinearRegression()
+reg.fit(cancer.drop('Level',axis='columns'),cancer.Level)
+reg.coef_
+reg.intercept_
+
+#Example Prediction
+reg.predict([[1, 2, 4, 5, 3, 5, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 6, 6, 6, 6, 6, 6]])
+#Cancer Model Is Complete
+
+#Model 2 Diabetes
+Mdiab = pd.read_csv('diabetes.csv')
+diab = Mdiab.drop(columns="DiabetesPedigreeFunction")
+reg = linear_model.LinearRegression()
+reg.fit(diab.drop('Outcome',axis='columns'),diab.Outcome)
+reg.coef_
+reg.intercept_
+#Example Prediction
+reg.predict([[5, 150, 80, 60, 15, 40, 80]]) 
+#Diabetes Model Is Complete
+
+#Heart diseases
+Mheart = pd.read_csv('heart.csv')
+heart = Mheart.drop(columns="time")
+# 1 refers to positive for that disease as well as it represents gender male. 0 refers to vice versa values
+reg = linear_model.LinearRegression()
+reg.fit(heart.drop('DEATH_EVENT',axis='columns'),heart.DEATH_EVENT)
+reg.coef_
+reg.intercept_
+
+
+#Example Prediction
+reg.predict([[50.0, 0, 196, 0, 45, 0, 395000.00, 1.6, 136, 1, 1]])
+#Heart model is complete
+
+#Thank You
+
+
+
+
+
+
+
+
+
+
+
+
+
+
