@@ -34,6 +34,9 @@ fig.suptitle('normal')
 plt.imshow(normal_images[0], cmap='gray') 
 
 covid_images = []
+
+
+#For DATADIR file --> https://bit.ly/2SODEqd
 for img_path in glob.glob(DATASET_DIR + '/covid/*'):
     covid_images.append(mpimg.imread(img_path))
 
