@@ -1,0 +1,1 @@
+The program combs through social media (Twitter and Facebook for this event) and records (in real time using Pravega data stream) the username of people who post, comment, tweet, share things relating to depreciating mental health. Part 2: (by team mate Alamu Sneha) Then the program sends the data to an AI chatbot and/or Medical Professional and/or the national suicide hotline 
